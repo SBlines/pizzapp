@@ -42,9 +42,9 @@
 					<td><%= pizza.get('name') %></td>
 					<td><%= pizza.get('topping') %></td>
 					<td><%= pizza.get('status') %></td>
-					<td><input id="cookBox" type="checkbox" ></td>
-					<td><input id="deliverBox" type="checkbox" ></td>
-					<td><button id="delBut" type="button">X</button></td>
+					<td><input class="cookBox" 		data-id='<%= pizza.cid %>'  type="checkbox" ></td>
+					<td><input class="deliverBox" 	data-id='<%= pizza.cid %>'  type="checkbox" ></td>
+					<td><button class="delBut" 		data-id='<%= pizza.cid %>'  type="button">X</button></td>
 				</tr>
 			 <% }); %>
 		</tbody>

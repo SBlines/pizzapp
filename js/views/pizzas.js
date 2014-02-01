@@ -11,6 +11,8 @@ var PizzaView = Backbone.View.extend({
     initialize: function() {
       console.log('View initialized');
       this.listenTo(this.collection, 'add', this.render, this);
+      this.listenTo(this.collection, 'remove', this.render, this);
+
       //this.collection.on('change', this.render, this);
       //this.listenTo(this.model, 'destroy', this.remove);
       // this.render();
@@ -42,9 +44,9 @@ var PizzaView = Backbone.View.extend({
 
     events: {
       'click #order': 'placeOrder',
-      'click #delBut': 'deleteOrder',
-      'click #cookBox': 'togCook',
-      'click #deliverBox': 'togDeliver'
+      'click .delBut': 'deleteOrder',
+      'click .cookBox': 'togCook',
+      'click .deliverBox': 'togDeliver'
     },
     
 
@@ -63,9 +65,13 @@ var PizzaView = Backbone.View.extend({
     //pizzaView.render();
   },
 
-  deleteOrder: function(){
+  deleteOrder: function(event){
+    // debugger;
+    var deleteModel = this.collection.get($(event.target).data("id"));
+    this.collection.remove(deleteModel);
+
     console.log("Destroy button pressed");
-    
+
     // console.log(this);
     // console.log(this.model);
     // console.log(this.collection);
