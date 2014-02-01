@@ -20,28 +20,28 @@
 
 
 	<script type="text/template" id="pizzaListTemplate">
-	<input id="new-name" placeholder="Name">
+		<input id="new-name" placeholder="Name">
 			<input id="new-topping" placeholder="Topping">
 			<button id="order" type="button">Place Order</button>
-	<table class="pizza-table">
-		<thead>
-			<tr>
-				<th>Order Number</th>
-				<th>Name</th>
-				<th>Topping</th>
-				<th>Status</th>
-				<th>Cooked?</th>
-				<th>Delivered?</th>
-				<th>Delete</th>
-			</tr>
-		</thead>
-		<tbody>
-			 <% _.each (pizzas.toJSON(), function(pizza){%>
+			<table class="pizza-table">
+				<thead>
+					<tr>
+						<th>Order Number</th>
+						<th>Name</th>
+						<th>Topping</th>
+						<th>Status</th>
+						<th>Cooked?</th>
+						<th>Delivered?</th>
+						<th>Delete</th>
+					</tr>
+				</thead>
+				<tbody>
+			 <% collection.forEach(function(pizza){%>
 				<tr>
-					<td><%= pizza.id || "ID" %></td>
-					<td><%= pizza.name %></td>
-					<td><%= pizza.topping %></td>
-					<td><%= pizza.status %></td>
+					<td><%= pizza.get('id') || "ID" %></td>
+					<td><%= pizza.get('name') %></td>
+					<td><%= pizza.get('topping') %></td>
+					<td><%= pizza.get('status') %></td>
 					<td><input id="cookBox" type="checkbox" ></td>
 					<td><input id="deliverBox" type="checkbox" ></td>
 					<td><button id="delBut" type="button">X</button></td>

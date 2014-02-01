@@ -4,21 +4,22 @@ var PizzaView = Backbone.View.extend({
 	el: '#order-form',
 
 	template: _.template($('#pizzaListTemplate').html()),
-  collection: pizzas,
-  model: Pizza,
+  // collection: pizzas,
+  // model: Pizza,
 
 
     initialize: function() {
       console.log('View initialized');
-      //this.listenTo(this.model, 'change', this.render());
-      //this.on('change', this.render, this);
+      this.listenTo(this.collection, 'add', this.render, this);
+      //this.collection.on('change', this.render, this);
       //this.listenTo(this.model, 'destroy', this.remove);
       // this.render();
       //this.model.bind('change', _.bind(this.render, this));
-      console.log(this);
       // this.model.on('change:status', this.render(), this);
+      //this.model.on('destroy', this.remove, this);
+      //console.log(this.model);
 
-      
+      // this.listenTo(pizzas, 'add', this.render, this);
      // _.bindAll(Pizza, "render");
      // this.model.bind('change', this.render);
      this.render();
@@ -32,8 +33,8 @@ var PizzaView = Backbone.View.extend({
       // if (this.model.changed.id !== undefined) {
       //   return;
       // }
-
-      this.$el.html( this.template( this.collection.toJSON() ) );
+      // debugger;
+      this.$el.html( this.template({collection: this.collection}) );
     
       return this;
 
@@ -50,18 +51,27 @@ var PizzaView = Backbone.View.extend({
     placeOrder: function(){
       console.log("Attempting to placeOrder");
       if(this.verify()){
-      var nameInput = $('#new-name').val();
-      var toppingInput = $('#new-topping').val();
-      pizzas.create({name: nameInput, topping: toppingInput});
-      document.getElementById("new-name").value = '';
-      document.getElementById("new-topping").value = '';
-    }
-    else{ alert('You did not fill in all the fields');}
-    
+        var nameInput = $('#new-name').val();
+        var toppingInput = $('#new-topping').val();
+        // debugger;
+        this.collection.create({name: nameInput, topping: toppingInput});
+        document.getElementById("new-name").value = '';
+        document.getElementById("new-topping").value = '';
+      } else { 
+        alert('You did not fill in all the fields');
+      }
+    //pizzaView.render();
   },
 
   deleteOrder: function(){
     console.log("Destroy button pressed");
+    
+    // console.log(this);
+    // console.log(this.model);
+    // console.log(this.collection);
+    // debugger;
+    // console.log(this.collection.model());
+    // console.log(Pizza);
   },
 
   verify: function(){
@@ -85,7 +95,7 @@ togDeliver: function(){
 
 });
 
-var pizzaView = new PizzaView();
+var pizzaView = new PizzaView({collection: pizzas});
 
 
 
