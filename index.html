@@ -16,8 +16,15 @@
 	
 
 
-
-
+	<script type="text/template" id="pizzaViewTemplate">
+			<td><%= pizza.get('id') || "ID" %></td>
+			<td><%= pizza.get('name') %></td>
+			<td><%= pizza.get('topping') %></td>
+			<td><%= pizza.get('status') %></td>
+			<td><input class="cookBox" 		data-id='<%= pizza.cid %>'  type="checkbox" <%= this.model.get('status')=='cooked' || this.model.get('status')=='delivered' ? 'checked' : '' %>></td>
+			<td><input class="deliverBox" 	data-id='<%= pizza.cid %>'  type="checkbox" <%= this.model.get('status')=='delivered' ? 'checked' : '' %>></td>
+			<td><button class="delBut" 		data-id='<%= pizza.cid %>'  type="button">X</button></td>
+	</script>
 
 	<script type="text/template" id="pizzaListTemplate">
 		<input id="new-name" placeholder="Name">
@@ -36,27 +43,13 @@
 					</tr>
 				</thead>
 				<tbody>
-			 <% collection.forEach(function(pizza){%>
-				<tr>
-					<td><%= pizza.get('id') || "ID" %></td>
-					<td><%= pizza.get('name') %></td>
-					<td><%= pizza.get('topping') %></td>
-					<td><%= pizza.get('status') %></td>
-					<td><input class="cookBox" 		data-id='<%= pizza.cid %>'  type="checkbox" ></td>
-					<td><input class="deliverBox" 	data-id='<%= pizza.cid %>'  type="checkbox" ></td>
-					<td><button class="delBut" 		data-id='<%= pizza.cid %>'  type="button">X</button></td>
-				</tr>
-			 <% }); %>
+
 		</tbody>
 
 	</table>
 
 	<!-- maybe put this template in the view? -->
 	</script>
-	
-
-<!-- 	<%= this.get('status')=='cooked' ? 'checked' : '' %>
-<input type="checkbox" name="vehicle" value="Car"> -->
 
 
 	<script src="js/lib/jquery.min.js"></script>
@@ -65,6 +58,7 @@
 	<script src="js/lib/backbone.localStorage.js"></script>
 	<script src="js/models/pizza.js"></script>
 	<script src="js/collections/pizzas.js"></script>
+	<script src="js/views/pizza_view.js"></script>
 	<script src="js/views/pizzas.js"></script>
 	<script src="js/views/appXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.js"></script>
 	<script src="js/routers/routerXXXXXXXXXXXXXXXXX.js"></script>

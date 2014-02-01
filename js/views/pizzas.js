@@ -1,6 +1,6 @@
 //views/pizzas.js
 //var app = app || {};
-var PizzaView = Backbone.View.extend({
+var PizzasView = Backbone.View.extend({
 	el: '#order-form',
 
 	template: _.template($('#pizzaListTemplate').html()),
@@ -11,19 +11,15 @@ var PizzaView = Backbone.View.extend({
     initialize: function() {
       console.log('View initialized');
       this.listenTo(this.collection, 'add', this.render, this);
-      this.listenTo(this.collection, 'remove', this.render, this);
+      //this.listenTo(this.collection, 'remove', this.render, this); // causes double render
+      this.listenTo(this.collection, 'destroy', this.render, this);
 
-      //this.collection.on('change', this.render, this);
-      //this.listenTo(this.model, 'destroy', this.remove);
-      // this.render();
-      //this.model.bind('change', _.bind(this.render, this));
+      this.collection.on('change', this.render, this);
       // this.model.on('change:status', this.render(), this);
       //this.model.on('destroy', this.remove, this);
       //console.log(this.model);
 
       // this.listenTo(pizzas, 'add', this.render, this);
-     // _.bindAll(Pizza, "render");
-     // this.model.bind('change', this.render);
      this.render();
     },
 
@@ -37,6 +33,13 @@ var PizzaView = Backbone.View.extend({
       // }
       // debugger;
       this.$el.html( this.template({collection: this.collection}) );
+      var self = this;
+      this.collection.forEach(function(pizza) {
+        var pizzaView = new PizzaView({model: pizza});
+        //debugger;
+        self.$el.find('tbody').append(pizzaView.render().el);
+
+      })
     
       return this;
 
@@ -44,9 +47,9 @@ var PizzaView = Backbone.View.extend({
 
     events: {
       'click #order': 'placeOrder',
-      'click .delBut': 'deleteOrder',
-      'click .cookBox': 'togCook',
-      'click .deliverBox': 'togDeliver'
+      // 'click .delBut': 'deleteOrder',
+      // 'click .cookBox': 'togCook',
+      // 'click .deliverBox': 'togDeliver'
     },
     
 
@@ -62,22 +65,6 @@ var PizzaView = Backbone.View.extend({
       } else { 
         alert('You did not fill in all the fields');
       }
-    //pizzaView.render();
-  },
-
-  deleteOrder: function(event){
-    // debugger;
-    var deleteModel = this.collection.get($(event.target).data("id"));
-    this.collection.remove(deleteModel);
-
-    console.log("Destroy button pressed");
-
-    // console.log(this);
-    // console.log(this.model);
-    // console.log(this.collection);
-    // debugger;
-    // console.log(this.collection.model());
-    // console.log(Pizza);
   },
 
   verify: function(){
@@ -86,22 +73,11 @@ var PizzaView = Backbone.View.extend({
       return true;
     }
     else{return false;}
-  },
-
-  togCook: function(){
-    console.log("cookBox clicked");
-    // console.log(this);
-    // console.log(this.model);
-    // this.model.set({status: 'cooked'});
-  },
-
-togDeliver: function(){
-    console.log("deliverBox clicked");
   }
 
 });
 
-var pizzaView = new PizzaView({collection: pizzas});
+var pizzasView = new PizzasView({collection: pizzas});
 
 
 
