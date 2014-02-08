@@ -28,7 +28,7 @@ var PizzaView = Backbone.View.extend({
     	console.log("cookBox clicked");
      	//console.log(this);
      	//console.log(this.model);
-    	if($('.cookBox').is(':checked')){
+    	if(this.$('.cookBox').is(':checked')){
     		this.model.set({status:'cooked'});
     	}//checked sets to cooked
 		else{
@@ -38,15 +38,15 @@ var PizzaView = Backbone.View.extend({
 
 	togDeliver: function(){
     	console.log("deliverBox clicked");
-    	if($('.cookBox').is(':checked') && $('.deliverBox').is(':checked')){
+    	if(this.$('.cookBox').is(':checked') && this.$('.deliverBox').is(':checked')){
     		this.model.set({status:'delivered'});
     	}//both checked sets to delivered
-		else if ($('.cookBox').is(':checked')){
+		else if (this.$('.cookBox').is(':checked')){
 			this.model.set({status:'cooked'});
 		}
 		else{
 			alert("Cannot deliver without cooking!");
-			$('.deliverBox').prop('checked', false);
+			this.$('.deliverBox').prop('checked', false);
 		}
 
 
@@ -58,10 +58,6 @@ var PizzaView = Backbone.View.extend({
   //   		this.model.set({status:'pending'});
   //   	}
     		
-
-
-    		// this.model.set({status:'pending'});
-    	 // have to cook first
   	}
 });
 

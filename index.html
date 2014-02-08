@@ -21,9 +21,9 @@
 			<td><%= pizza.get('name') %></td>
 			<td><%= pizza.get('topping') %></td>
 			<td><%= pizza.get('status') %></td>
-			<td><input class="cookBox" 		data-id='<%= pizza.cid %>'  type="checkbox" <%= this.model.get('status')=='cooked' || this.model.get('status')=='delivered' ? 'checked' : '' %>></td>
-			<td><input class="deliverBox" 	data-id='<%= pizza.cid %>'  type="checkbox" <%= this.model.get('status')=='delivered' ? 'checked' : '' %>></td>
-			<td><button class="delBut" 		data-id='<%= pizza.cid %>'  type="button">X</button></td>
+			<td><input class="cookBox" data-id='<%= pizza.cid %>'  type="checkbox" <%= this.model.get('status')=='cooked' || this.model.get('status')=='delivered' ? 'checked' : '' %>></td>
+			<td><input class="deliverBox" data-id='<%= pizza.cid %>'  type="checkbox" <%= this.model.get('status')=='delivered' ? 'checked' : '' %>></td>
+			<td><button class="delBut" data-id='<%= pizza.cid %>'  type="button">X</button></td>
 	</script>
 
 	<script type="text/template" id="pizzaListTemplate">
