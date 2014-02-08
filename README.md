@@ -1,6 +1,6 @@
 potential next plans:
 
-#pizzaListTemplate, for collection rendering
+\#pizzaListTemplate, for collection rendering
 checkboxes for toppings
 on click #order, grabs all titles of checked boxes and adds to topping array. default topping is 'Cheese'
 click also unchecks all checkboxes
