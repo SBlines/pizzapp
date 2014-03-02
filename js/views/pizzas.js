@@ -15,9 +15,7 @@ var PizzasView = Backbone.View.extend({
     this.listenTo(this.collection, 'destroy', this.render, this);
 
     this.collection.on('change', this.render, this);
-    // this.model.on('change:status', this.render(), this);
-    //this.model.on('destroy', this.remove, this);
-     this.render();
+    this.render();
   },
 
   render: function(){
@@ -59,6 +57,7 @@ var PizzasView = Backbone.View.extend({
 
   verify: function(){
     //verify can be done in Model when saving
+    //won't need to verify toppings once checkboxes are created. set default to chesse topping if no other boxes
     if($('#new-name').val().length > 0 && $('#new-topping').val().length > 0){
       return true;
     }
