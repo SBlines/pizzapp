@@ -31,3 +31,12 @@ can also display NAME's Pizza and auto-hide after x seconds?
 <input type="checkbox" name="topping" value="pineapple">Pineapple<br>
 <input type="checkbox" name="topping" value="sausage">Sausage
 </form>
+
+
+<td><select>
+			<%pizza.get('topping').forEach(function(top){
+				("<option>" + top + "</option>");
+			})%>
+
+
+</select></td>

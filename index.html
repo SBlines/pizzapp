@@ -19,7 +19,11 @@
 	<script type="text/template" id="pizzaViewTemplate">
 			<td><%= pizza.get('id') || "ID" %></td>
 			<td><%= pizza.get('name') %></td>
-			<td><%= pizza.get('topping') %></td>
+			<td><select>
+				<%pizza.get('topping').forEach(function(top){%>
+					<option><%=top%></option>;
+				<%})%>
+			</select></td>
 			<td><%= pizza.get('status') %></td>
 			<td><input class="cookBox" data-id='<%= pizza.cid %>'  type="checkbox" <%= this.model.get('status')=='cooked' || this.model.get('status')=='delivered' ? 'checked' : '' %>></td>
 			<td><input class="deliverBox" data-id='<%= pizza.cid %>'  type="checkbox" <%= this.model.get('status')=='delivered' ? 'checked' : '' %>></td>
@@ -33,15 +37,15 @@
 
 
 			<form action="">
-				<input type="checkbox" name="topping" value="anchovies">Anchovies<br>
-				<input type="checkbox" name="topping" value="beef">Beef<br>
-				<input type="checkbox" name="topping" value="extraCheese">Extra Cheese<br>
-				<input type="checkbox" name="topping" value="olives">Olives<br>
-				<input type="checkbox" name="topping" value="mushrooms">Mushrooms<br>
-				<input type="checkbox" name="topping" value="pepperoni">Pepperoni<br>
-				<input type="checkbox" name="topping" value="peppers">Peppers<br>
-				<input type="checkbox" name="topping" value="pineapple">Pineapple<br>
-				<input type="checkbox" name="topping" value="sausage">Sausage<br>
+				<input type="checkbox" name="topping" value="Anchovies">Anchovies<br>
+				<input type="checkbox" name="topping" value="Beef">Beef<br>
+				<input type="checkbox" name="topping" value="Extra Cheese">Extra Cheese<br>
+				<input type="checkbox" name="topping" value="Olives">Olives<br>
+				<input type="checkbox" name="topping" value="Mushrooms">Mushrooms<br>
+				<input type="checkbox" name="topping" value="Pepperoni">Pepperoni<br>
+				<input type="checkbox" name="topping" value="Peppers">Peppers<br>
+				<input type="checkbox" name="topping" value="Pineapple">Pineapple<br>
+				<input type="checkbox" name="topping" value="Sausage">Sausage<br>
 			</form><br>
 
 

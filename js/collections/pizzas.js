@@ -44,5 +44,5 @@
 	});
 
 	var pizzas = new Pizzas;
-	pizzas.create({name:'HARD', topping: 'CODE'});
+	//pizzas.create({name:'HARD', topping: 'CODE'});
 // })();

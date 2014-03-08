@@ -45,15 +45,17 @@ var PizzasView = Backbone.View.extend({
     console.log("Attempting to placeOrder");
     if(this.verify()){
       var nameInput = $('#new-name').val();
+      var toppingInput = [];
       //var toppingInput = $('#new-topping').val();
 
-      var toppingInput = $("input:checkbox[name=topping]:checked").each(function(){
-        toppingInput.push($(this).val());
-      });
+      $("input:checkbox[name=topping]:checked").each(function(){
+        toppingInput.push(this.value);
+       });
+      console.log("Inputs we get: " + toppingInput);
 
       this.collection.create({name: nameInput, topping: toppingInput});
       document.getElementById("new-name").value = '';
-      document.getElementById("new-topping").value = '';
+      //document.getElementById("new-topping").value = '';
     }
     else { 
       alert('You did not fill in all the fields');
@@ -64,7 +66,7 @@ var PizzasView = Backbone.View.extend({
     //verify can be done in Model when saving
     //won't need to verify toppings once checkboxes are created. set default to chesse topping if no other boxes
     //if($('#new-name').val().length > 0 && $('#new-topping').val().length > 0){
-    if($('#new-name').val().length > 0 && toppingInput.length > 0){
+    if($('#new-name').val().length > 0){
       return true;
     }
     else {
