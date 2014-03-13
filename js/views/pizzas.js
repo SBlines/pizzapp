@@ -46,19 +46,20 @@ var PizzasView = Backbone.View.extend({
     if(this.verify()){
       var nameInput = $('#new-name').val();
       var toppingInput = [];
-      //var toppingInput = $('#new-topping').val();
 
       $("input:checkbox[name=topping]:checked").each(function(){
         toppingInput.push(this.value);
        });
       console.log("Inputs we get: " + toppingInput);
 
+      if(!toppingInput.length){toppingInput.push("Cheese");}
+
       this.collection.create({name: nameInput, topping: toppingInput});
       document.getElementById("new-name").value = '';
-      //document.getElementById("new-topping").value = '';
+      //checkboxes auto-clear upon Place Order
     }
     else { 
-      alert('You did not fill in all the fields');
+      alert('You must enter a name!');
     }
   },
 
