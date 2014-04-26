@@ -17,15 +17,12 @@ var PizzaView = Backbone.View.extend({
   },
 
   render: function() {
-  	//debugger;
     this.$el.html( this.template({pizza: this.model}) );
     return this;
   },
 
   togCook: function(){
     //console.log("cookBox clicked");
-    //console.log(this);
-    //console.log(this.model);
     if(this.$('.cookBox').is(':checked')){
     	this.model.set({status:'cooked'});
     }//checked sets to cooked

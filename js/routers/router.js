@@ -1,18 +1,18 @@
 /*global Backbone */
-//var app = app || {};
+
+
+//Not using this currently
 
 (function () {
 	'use strict';
 
-	// Todo Router
+	// Pizza Router
 	// ----------
 	var PizzaRouter = Backbone.Router.extend({
 		routes: {
 			'': 'home'
 		}
 	});
-
-	// not sure why this is here---    var pizzaView = new PizzaView;
 
 	var pizzaRouter = new PizzaRouter();
 	pizzaRouter.on('route:home'), function(){

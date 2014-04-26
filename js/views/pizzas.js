@@ -1,5 +1,4 @@
 //views/pizzas.js
-//var app = app || {};
 var PizzasView = Backbone.View.extend({
 	el: '#order-form',
 
@@ -24,7 +23,6 @@ var PizzasView = Backbone.View.extend({
     // if (this.model.changed.id !== undefined) {
     //   return;
     // }
-    // debugger;
     this.$el.html( this.template({collection: this.collection}) );
     var self = this;
     this.collection.forEach(function(pizza) {

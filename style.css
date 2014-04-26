@@ -1,6 +1,15 @@
 table,th,td {
 	border:1px solid #000;
 }
-.delBut{
+th {
+	min-width: 4.5em;
+}
+td {
+	text-align: center;
+}
+td:nth-child(3) {
+	text-align: left;
+}
+.delBut {
 	color: red;
 }

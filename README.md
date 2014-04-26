@@ -18,25 +18,3 @@ not sure how to display/remove pizza image. loop through toppings array and topp
 can also display NAME's Pizza and auto-hide after x seconds?
 
 
-
-
-<form action="">
-<input type="checkbox" name="topping" value="anchovies">Anchovies<br>
-<input type="checkbox" name="topping" value="beef">Beef<br>
-<input type="checkbox" name="topping" value="extraCheese">Extra Cheese<br>
-<input type="checkbox" name="topping" value="olives">Olives<br>
-<input type="checkbox" name="topping" value="mushrooms">Mushrooms<br>
-<input type="checkbox" name="topping" value="pepperoni">Pepperoni<br>
-<input type="checkbox" name="topping" value="peppers">Peppers<br>
-<input type="checkbox" name="topping" value="pineapple">Pineapple<br>
-<input type="checkbox" name="topping" value="sausage">Sausage
-</form>
-
-
-<td><select>
-			<%pizza.get('topping').forEach(function(top){
-				("<option>" + top + "</option>");
-			})%>
-
-
-</select></td>
